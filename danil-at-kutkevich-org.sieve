@@ -63,7 +63,9 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
 } elsif header :is ["list-id", "list-post"] ["gentoo-user-ru.gentoo.org", "<gentoo-user-ru.gentoo.org>"] {
   fileinto "INBOX.gentoo_community";
 } elsif allof (header :is ["list-id", "list-post"] ["medappsupport.hospital-systems.com", "<medappsupport.hospital-systems.com>"],
-               anyof (header :is "X-Redmine-Sender" "danil", header :contains "Subject" "Ready for Deploy")) {
+               anyof (header :is "X-Redmine-Sender" "danil",
+                      header :contains "Subject" "(Ready for Deploy)",
+                      header :contains "Subject" "(Done)")) {
   fileinto "INBOX.sieve_to_trash";
 } elsif header :contains ["x-resolved-to"] "+chatlogs@" {
   addflag "$ChatLog";
