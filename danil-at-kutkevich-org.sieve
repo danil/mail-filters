@@ -67,6 +67,9 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
                       header :contains "Subject" "(Ready for Deploy)",
                       header :contains "Subject" "(Done)")) {
   fileinto "INBOX.sieve_to_trash";
+} elsif allof (address :all :is "from" "no-reply@jolla.com",
+               header :contains "Subject" "together.jolla.com") {
+  fileinto "INBOX.jolla_community";
 } elsif header :contains ["x-resolved-to"] "+chatlogs@" {
   addflag "$ChatLog";
   addflag "\\Seen";
