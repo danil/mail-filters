@@ -4,7 +4,14 @@ if header :contains ["x-resolved-to"] "+personalitysentitem-20160237@" {
   setflag "\\Seen";
   fileinto "INBOX.Sent Items";
   stop;
-  }
+}
+if allof(
+ address :all :is "from" "CardMaster@vtb-sz.ru",
+ address :all :is "to" "danila@kutkevich.com"
+) {
+  discard;
+  stop;
+}
 if not header :contains ["X-Spam-known-sender"] "yes" {
 if allof(
   header :contains ["X-Backscatter"] "yes",
