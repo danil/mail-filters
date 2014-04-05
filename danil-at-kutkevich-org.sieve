@@ -69,6 +69,8 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.molinos";
 } elsif header :is ["list-id", "list-post"] ["gentoo-user-ru.gentoo.org", "<gentoo-user-ru.gentoo.org>"] {
   fileinto "INBOX.gentoo_community";
+} elsif address :all :is "from" "contact@humblebundle.com" {
+  fileinto "INBOX.humblebundle_list";
 } elsif allof (header :is ["list-id", "list-post"] ["medappsupport.hospital-systems.com", "<medappsupport.hospital-systems.com>"],
                anyof (header :is "X-Redmine-Sender" "danil",
                       header :contains "Subject" "(Ready for Deploy)",
