@@ -5,10 +5,9 @@ if header :contains ["x-resolved-to"] "+personalitysentitem-20160237@" {
   fileinto "INBOX.Sent Items";
   stop;
 }
-if allof(
- address :all :is "from" "CardMaster@vtb-sz.ru",
- address :all :is "to" "danila@kutkevich.com"
-) {
+if anyof(allof(address :all :is "from" "CardMaster@vtb-sz.ru",
+               address :all :is "to" "danila@kutkevich.com"),
+         address :all :is "from" "NoteBookReview@lists.techtarget.com") {
   discard;
   stop;
 }
