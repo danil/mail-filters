@@ -44,6 +44,8 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.lists";
 } elsif header :regex "from" "(^|,)[[:space:]]*\"?Jolla[[:space:]]+Users[[:space:]]+Blog\"?[[:space:]]*<" {
   fileinto "INBOX.sailfishos_feeds";
+} elsif header :is ["list-id", "list-post"] ["devel.lists.sailfishos.org", "<devel.lists.sailfishos.org>"] {
+  fileinto "INBOX.sailfishos_list";
 } elsif header :is ["list-id", "list-post"] ["info-member.gnu.org", "<info-member.gnu.org>"] {
   fileinto "INBOX.fsf_lists";
 } elsif address :all :is "from" "info@defectivebydesign.org" {
