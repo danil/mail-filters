@@ -68,8 +68,7 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.lists";
 } elsif address :all :is ["to", "cc", "resent-to", "x-delivered-to"] "news@lists.molinos.ru" {
   fileinto "INBOX.molinos";
-} elsif allof (header :is "list-id" "gentoo-user-ru.gentoo.org",
-               header :contains "list-post" "gentoo-user-ru.gentoo.org") {
+} elsif header :is "list-id" "gentoo-user-ru.gentoo.org" {
   fileinto "INBOX.gentoo_community";
 } elsif address :all :is "from" "contact@humblebundle.com" {
   fileinto "INBOX.humblebundle_list";
