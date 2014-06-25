@@ -80,9 +80,9 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
 } elsif allof (address :all :is "from" "no-reply@jolla.com",
                header :contains "Subject" "together.jolla.com") {
   fileinto "INBOX.jolla_community";
-} elsif header :is "list-id" "awesome.naquadah.org" {
+} elsif header :contains "list-id" "awesome.naquadah.org" {
   fileinto "INBOX.awesome_list";
-} elsif header :is "list-id" "awesome-devel.naquadah.org" {
+} elsif header :contains "list-id" "awesome-devel.naquadah.org" {
   fileinto "INBOX.awesome_devel_list";
 } elsif header :contains ["x-resolved-to"] "+chatlogs@" {
   addflag "$ChatLog";
