@@ -86,15 +86,14 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.awesome_list";
 } elsif header :contains "list-id" "awesome-devel.naquadah.org" {
   fileinto "INBOX.awesome_devel_list";
-} elsif header :contains "list-id" "salemed.HealthSamurai.github.com" {
+} elsif allof (header :contains "list-id" "salemed.HealthSamurai.github.com",
+               header :contains "from" "HealthSamurai TeamCity Server",
+               anyof (body :text :contains "is now running",
+                      body :text :contains "outcome was **SUCCESS**")) {
+  fileinto "INBOX.sieve_to_trash";
+} elsif allof (header :contains "list-id" "salemed.HealthSamurai.github.com",
+               header :contains "from" "HealthSamurai TeamCity Server") {
   fileinto "INBOX.salemed_ci";
-# } elsif body :text :contains  "foobar" {
-#   fileinto "Inbox";
-
-# } elsif allof (header :contains "list-id" "salemed.HealthSamurai.github.com"
-#                anyof (body :raw :contains "is now running",
-#                       body :raw :contains "utcome was **SUCCESS**")) {
-#   fileinto "INBOX.Trash";
 } elsif header :contains ["x-resolved-to"] "+chatlogs@" {
   addflag "$ChatLog";
   addflag "\\Seen";
