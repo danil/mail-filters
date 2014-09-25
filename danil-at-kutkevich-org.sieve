@@ -86,6 +86,9 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.awesome_list";
 } elsif header :contains "list-id" "awesome-devel.naquadah.org" {
   fileinto "INBOX.awesome_devel_list";
+} elsif allof (address :all :is "from" "notifications@travis-ci.org",
+               header :contains "Passed: ") {
+  fileinto "INBOX.sieve_to_trash";
 } elsif allof (header :contains "list-id" "salemed.HealthSamurai.github.com",
                header :contains "from" "HealthSamurai TeamCity Server",
                anyof (body :text :contains "is now running",
