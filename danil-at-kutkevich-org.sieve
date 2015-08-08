@@ -92,6 +92,9 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.suckless_dev";
 } elsif header :contains "Subject" "[Fail2Ban]" {
   fileinto "INBOX.fail2ban";
+} elsif allof (address :all :is "from" "noreply@kutkevich.org",
+               header :contains "Subject" "[twitter]") {
+  fileinto "INBOX.twitter";
 } elsif allof (address :all :is "from" "contact@luadns.com",
                header :contains "Subject" "[LuaDNS]: Build completed") {
   fileinto "INBOX.luadns";
