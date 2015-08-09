@@ -55,7 +55,7 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
 } elsif address :all :is "from" "sales@fsf.org" {
   fileinto "INBOX.fsf_lists";
 } elsif header :contains "list-id" "exim-users.mailground.net" {
-  fileinto "INBOX.exim_users_list";
+  fileinto "INBOX.exim_lists";
 } elsif header :is ["list-id", "list-post"] ["spbhug.googlegroups.com", "<spbhug.googlegroups.com>"] {
   fileinto "INBOX.lists";
 } elsif header :is ["list-id", "list-post"] ["emacs-on-rails.googlegroups.com", "<emacs-on-rails.googlegroups.com>"] {
