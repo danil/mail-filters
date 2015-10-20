@@ -117,6 +117,9 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
                header :contains "Subject" ["Webzilla - Invoice", "is paid"],
                body :text :contains "Total due: EUR 0.00") {
   fileinto "INBOX.sieve_to_trash";
+} elsif allof (address :all :is "from" "noreply@auto.ru",
+               header :contains "Subject" "Найдены новые объявления") {
+  fileinto "INBOX.auto_ru_feed";
 } elsif allof (header :contains "list-id" "salemed.HealthSamurai.github.com",
                header :contains "from" "HealthSamurai TeamCity Server",
                anyof (body :text :contains "is now running",
