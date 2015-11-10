@@ -96,7 +96,10 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
                header :contains "Subject" "[twitter]",
                anyof (body :text :contains "RT @PostCSS:",
                       body :text :contains "RT @StationCDRKelly:",
-                      body :text :contains "RT @sindresorhus:")) {
+                      body :text :contains "RT @sindresorhus:",
+                      body :text :contains "autoprefixer",
+                      body :text :contains "postcss",
+                      body :text :contains "posthtml")) {
   fileinto "INBOX.sieve_to_trash";
 } elsif allof (address :all :is "from" "noreply@kutkevich.org",
                header :contains "Subject" "[twitter]") {
