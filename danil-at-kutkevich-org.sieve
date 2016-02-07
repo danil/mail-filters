@@ -88,6 +88,8 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.awesome_devel_list";
 } elsif header :contains "list-id" "golang-ru.googlegroups.com" {
   fileinto "INBOX.golang-ru_list";
+} elsif header :contains "list-id" "forum.rustycrate.ru" {
+  fileinto "INBOX.rustycrate-ru-list";
 } elsif header :contains "list-id" "dev.suckless.org" {
   fileinto "INBOX.suckless_dev";
 } elsif header :contains "Subject" "[Fail2Ban]" {
