@@ -117,6 +117,8 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.tinkoff-list";
 } elsif header :contains "list-id" "fhirbase.googlegroups.com" {
   fileinto "INBOX.fhirbase-list";
+} elsif header :contains "List-Subscribe" "http://www.healthintersections.com.au" {
+  fileinto "INBOX.fhir-planet";
 } elsif allof (address :all :is "from" "notifier@mail.rollbar.com",
                header :contains "Subject" "[hl7rus]") {
   fileinto "INBOX.waveaccess";
