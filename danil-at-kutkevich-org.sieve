@@ -1,4 +1,5 @@
-require ["envelope", "imapflags", "fileinto", "reject", "notify", "vacation", "regex", "relational", "comparator-i;ascii-numeric", "body", "copy"];
+# You were using Advanced Rules (custom sieve script). We disabled all
+# the converted rules and appended your existing script below
 
 if header :contains ["x-resolved-to"] "+personalitysentitem-20160237@" {
   setflag "\\Seen";
