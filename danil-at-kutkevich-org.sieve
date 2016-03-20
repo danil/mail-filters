@@ -116,6 +116,8 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.sieve_to_trash";
 } elsif address :all :is "from" "journal@tinkoff.ru" {
   fileinto "INBOX.tinkoff-list";
+} elsif address :all :is "from" "newsletter@ink361.com" {
+  fileinto "INBOX.ink361-feed";
 } elsif header :contains "list-id" "fhirbase.googlegroups.com" {
   fileinto "INBOX.fhirbase-list";
 } elsif header :contains "List-Subscribe" "http://www.healthintersections.com.au" {
