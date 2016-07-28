@@ -110,6 +110,9 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
 } elsif allof (address :all :is "from" "noreply@kutkevich.org",
                header :contains "Subject" "[twitter]") {
   fileinto "INBOX.twitter";
+} elsif allof (address :all :is "from" "noreply@kutkevich.org",
+               header :contains "Subject" "[twitter2]") {
+  fileinto "INBOX.twitter_test";
 } elsif allof (address :all :is "from" "contact@luadns.com",
                header :contains "Subject" "[LuaDNS]: Build completed") {
   fileinto "INBOX.luadns";
