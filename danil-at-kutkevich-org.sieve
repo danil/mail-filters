@@ -99,13 +99,16 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.fail2ban";
 } elsif allof (address :all :is "from" "noreply@kutkevich.org",
                header :contains "Subject" "[twitter] @andreysitnik",
-               anyof (body :text :contains "RT @PostCSS:",
+               anyof (
+                      body :text :contains "RT @PostCSS:",
                       body :text :contains "RT @RussianSpaceWeb:",
                       body :text :contains "RT @StationCDRKelly:",
+                      body :text :contains "RT @neomechanica:",
                       body :text :contains "RT @sindresorhus:",
                       body :text :contains "autoprefixer",
                       body :text :contains "postcss",
-                      body :text :contains "posthtml")) {
+                      body :text :contains "posthtml"
+                      )) {
   fileinto "INBOX.sieve_to_trash";
 } elsif allof (address :all :is "from" "noreply@kutkevich.org",
                header :contains "Subject" "[twitter]") {
