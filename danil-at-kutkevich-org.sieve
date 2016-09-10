@@ -153,7 +153,7 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
 } elsif allof (address :all :is "to" "postmaster@sazhi.net",
                anyof (header :matches "X-Attached" ["*.zip", "*.docm"]
                       body :raw :contains ["Content-Type: application/zip",
-                                           "application/vnd.ms-word.document.macroEnabled.12")) {
+                                           "Content-Type: application/vnd.ms-word.document.macroEnabled.12")) {
   fileinto "INBOX.Junk Mail";
 } elsif header :contains ["x-resolved-to"] "+chatlogs@" {
   addflag "$ChatLog";
