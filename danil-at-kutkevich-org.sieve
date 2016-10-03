@@ -153,7 +153,7 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
 } elsif address :all :is "from" "promo@em.ivi.ru" {
   fileinto "INBOX.Junk Mail";
 # } elsif allof (address :all :is "to" "postmaster@sazhi.net",
-#                anyof (header :matches "X-Attached" ["*.zip", "*.docm"]
+#                anyof (header :matches "X-Attached" ["*.docm", "*.xls", "*.zip"]
 #                       body :raw :contains ["Content-Type: application/zip",
 #                                            "Content-Type: application/vnd.ms-word.document.macroEnabled.12")) {
 #   fileinto "INBOX.Junk Mail";
