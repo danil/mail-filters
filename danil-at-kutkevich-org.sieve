@@ -71,7 +71,7 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
                anyof (header :is "X-Redmine-Sender" "danil",
                       header :contains "Subject" "(Ready for Deploy)",
                       header :contains "Subject" "(Done)")) {
-  fileinto "INBOX.sieve_to_trash";
+  fileinto "INBOX.sieve_trash";
 } elsif allof (address :all :is "from" "no-reply@jolla.com",
                header :contains "Subject" "together.jolla.com") {
   fileinto "INBOX.jolla_community";
@@ -103,7 +103,7 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
                       body :text :contains "postcss",
                       body :text :contains "posthtml"
                       )) {
-  fileinto "INBOX.sieve_to_trash";
+  fileinto "INBOX.sieve_trash";
 } elsif allof (address :all :is "from" "noreply@kutkevich.org",
                header :contains "Subject" "[twitter]") {
   fileinto "INBOX.twitter";
@@ -115,7 +115,7 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.luadns";
 } elsif allof (address :all :is "from" "cloud@fruux.com",
                header :contains "Subject" "No events") {
-  fileinto "INBOX.sieve_to_trash";
+  fileinto "INBOX.sieve_trash";
 } elsif address :all :is "from" "journal@tinkoff.ru" {
   fileinto "INBOX.tinkoff-list";
 } elsif address :all :is "from" "newsletter@ink361.com" {
@@ -131,14 +131,14 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.waveaccess";
 } elsif allof (address :all :is "from" "builds@travis-ci.org",
                header :contains "Subject" ["Passed: ", "Fixed: "]) {
-  fileinto "INBOX.sieve_to_trash";
+  fileinto "INBOX.sieve_trash";
 } elsif allof (address :all :is "from" "builds@drone.io",
                header :contains "Subject" "[SUCCESS]") {
-  fileinto "INBOX.sieve_to_trash";
+  fileinto "INBOX.sieve_trash";
 } elsif allof (address :all :is "from" "no-reply@webzilla.com",
                header :contains "Subject" ["Webzilla - Invoice", "is paid"],
                body :text :contains "Total due: EUR 0.00") {
-  fileinto "INBOX.sieve_to_trash";
+  fileinto "INBOX.sieve_trash";
 } elsif allof (address :all :is "from" "noreply@auto.ru",
                header :contains "Subject" "Найдены новые объявления") {
   fileinto "INBOX.auto_ru_feed";
@@ -146,7 +146,7 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
                header :contains "from" "HealthSamurai TeamCity Server",
                anyof (body :text :contains "is now running",
                       body :text :contains "outcome was **SUCCESS**")) {
-  fileinto "INBOX.sieve_to_trash";
+  fileinto "INBOX.sieve_trash";
 } elsif address :all :is "from" "promo@em.ivi.ru" {
   fileinto "INBOX.Junk Mail";
 # } elsif allof (address :all :is "to" "postmaster@sazhi.net",
