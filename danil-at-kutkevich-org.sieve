@@ -147,9 +147,6 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
                anyof (body :text :contains "is now running",
                       body :text :contains "outcome was **SUCCESS**")) {
   fileinto "INBOX.sieve_to_trash";
-} elsif allof (header :contains "list-id" "salemed.HealthSamurai.github.com",
-               header :contains "from" "HealthSamurai TeamCity Server") {
-  fileinto "INBOX.salemed_ci";
 } elsif address :all :is "from" "promo@em.ivi.ru" {
   fileinto "INBOX.Junk Mail";
 # } elsif allof (address :all :is "to" "postmaster@sazhi.net",
