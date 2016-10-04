@@ -147,7 +147,12 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
                anyof (body :text :contains "is now running",
                       body :text :contains "outcome was **SUCCESS**")) {
   fileinto "INBOX.sieve_trash";
-} elsif address :all :is "from" "promo@em.ivi.ru" {
+} elsif allof (address :all :is "from" "info@velodrive.ru",
+               header :contains "Content-Type" "multipart/alternative",
+               header :contains "list-id" "3c63feb6") {
+  fileinto "INBOX.adv";
+} elsif allof (address :all :is "from" "promo@em.ivi.ru",
+               header :contains "Content-Type" "multipart/alternative") {
   fileinto "INBOX.Junk Mail";
 # } elsif allof (address :all :is "to" "postmaster@sazhi.net",
 #                anyof (header :matches "X-Attached" ["*.docm", "*.xls", "*.zip"]
