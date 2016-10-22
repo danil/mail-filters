@@ -6,19 +6,24 @@ if header :contains ["x-resolved-to"] "+personalitysentitem-20160237@" {
   fileinto "INBOX.Sent Items";
   stop;
 }
+
 if not header :contains ["X-Spam-known-sender"] "yes" {
-if allof(
-  header :contains ["X-Backscatter"] "yes",
-  not header :matches ["X-LinkName"] "*"
-) {
-  fileinto "INBOX.Junk Mail";
+  if allof(header :contains ["X-Backscatter"] "yes",
+           not header :matches ["X-LinkName"] "*") {
+      fileinto "INBOX.Junk Mail";
+      stop;
+  }
+  if header :value "ge" :comparator "i;ascii-numeric" ["X-Spam-score"] ["5"]  {
+      fileinto "INBOX.Junk Mail";
+      stop;
+  }
+}
+
+if address :all :is "from" "NoteBookReview@lists.techtarget.com" {
+  discard;
   stop;
 }
-if  header :value "ge" :comparator "i;ascii-numeric" ["X-Spam-score"] ["5"]  {
-  fileinto "INBOX.Junk Mail";
-  stop;
-}
-}
+
 if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.googlegroups.com>"] {
   fileinto "INBOX.ror2ru_list";
 } elsif address :all :is "from" "noreply@youtube.com" {
@@ -166,9 +171,3 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   removeflag "$ChatLog";
   removeflag "\\Seen";
 }
-# if anyof(allof(address :all :is "from" "CardMaster@vtb-sz.ru",
-#                address :all :is "to" "danila@kutkevich.com"),
-#          address :all :is "from" "NoteBookReview@lists.techtarget.com") {
-#   discard;
-#   stop;
-# }
