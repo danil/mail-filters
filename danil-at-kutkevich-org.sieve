@@ -7,6 +7,11 @@ if header :contains ["x-resolved-to"] "+personalitysentitem-20160237@" {
   stop;
 }
 
+if address :all :is "from" "NoteBookReview@lists.techtarget.com" {
+  discard;
+  stop;
+}
+
 if not header :contains ["X-Spam-known-sender"] "yes" {
   if allof(header :contains ["X-Backscatter"] "yes",
            not header :matches ["X-LinkName"] "*") {
@@ -17,11 +22,6 @@ if not header :contains ["X-Spam-known-sender"] "yes" {
       fileinto "INBOX.Junk Mail";
       stop;
   }
-}
-
-if address :all :is "from" "NoteBookReview@lists.techtarget.com" {
-  discard;
-  stop;
 }
 
 if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.googlegroups.com>"] {
