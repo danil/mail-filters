@@ -132,7 +132,7 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
 } elsif header :contains "List-Subscribe" "http://www.healthintersections.com.au" {
   fileinto "INBOX.fhir-planet";
 } elsif allof (address :all :is "from" "notifier@mail.rollbar.com",
-               header :contains "Subject" "[hl7rus]") {
+               header :contains "Subject" ["holiadvice", "[hl7rus]"]) {
   fileinto "INBOX.waveaccess";
 } elsif allof (address :all :is "from" "builds@travis-ci.org",
                header :contains "Subject" ["Passed: ", "Fixed: "]) {
