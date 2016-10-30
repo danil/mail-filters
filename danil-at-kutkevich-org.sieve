@@ -154,8 +154,9 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
 }
 
 # Twitter.
-if address :all :is "from" "noreply@kutkevich.org" {
-  if header :contains "Subject" "[twitter] @andreysitnik" {
+if allof (address :all :is "from" "noreply@kutkevich.org",
+          header :contains "Subject" "[twitter]") {
+  if header :contains "Subject" "@andreysitnik" {
     if anyof (
               body :text :contains "RT @PostCSS:",
               body :text :contains "RT @RussianSpaceWeb:",
@@ -170,17 +171,21 @@ if address :all :is "from" "noreply@kutkevich.org" {
       stop;
     }
 
+    fileinto "INBOX.twitter3";
+    stop;
+  }
+
+  if header :contains "Subject" "@rubynoname" {
     fileinto "INBOX.twitter2";
     stop;
   }
 
-  if header :contains "Subject" "[twitter]" {
-    fileinto "INBOX.twitter";
-    stop;
-  }
+  fileinto "INBOX.twitter";
+  stop;
+}
 
-  if header :contains "Subject" "[twitter2]" {
-    fileinto "INBOX.twitter_test";
-    stop;
-  }
+if allof (address :all :is "from" "noreply@kutkevich.org",
+          header :contains "Subject" "[twitter2]") {
+  fileinto "INBOX.twitter_test";
+  stop;
 }
