@@ -96,25 +96,6 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.suckless_dev";
 } elsif header :contains "Subject" "[Fail2Ban]" {
   fileinto "INBOX.fail2ban";
-} elsif allof (address :all :is "from" "noreply@kutkevich.org",
-               header :contains "Subject" "[twitter] @andreysitnik",
-               anyof (
-                      body :text :contains "RT @PostCSS:",
-                      body :text :contains "RT @RussianSpaceWeb:",
-                      body :text :contains "RT @StationCDRKelly:",
-                      body :text :contains "RT @neomechanica:",
-                      body :text :contains "RT @sindresorhus:",
-                      body :text :contains "autoprefixer",
-                      body :text :contains "postcss",
-                      body :text :contains "posthtml"
-                      )) {
-  fileinto "INBOX.sieve_trash";
-} elsif allof (address :all :is "from" "noreply@kutkevich.org",
-               header :contains "Subject" "[twitter]") {
-  fileinto "INBOX.twitter";
-} elsif allof (address :all :is "from" "noreply@kutkevich.org",
-               header :contains "Subject" "[twitter2]") {
-  fileinto "INBOX.twitter_test";
 } elsif allof (address :all :is "from" "contact@luadns.com",
                header :contains "Subject" "[LuaDNS]: Build completed") {
   fileinto "INBOX.luadns";
@@ -170,4 +151,36 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.Chats";
   removeflag "$ChatLog";
   removeflag "\\Seen";
+}
+
+# Twitter.
+if address :all :is "from" "noreply@kutkevich.org" {
+  if header :contains "Subject" "[twitter] @andreysitnik") {
+    if anyof (
+              body :text :contains "RT @PostCSS:",
+              body :text :contains "RT @RussianSpaceWeb:",
+              body :text :contains "RT @StationCDRKelly:",
+              body :text :contains "RT @neomechanica:",
+              body :text :contains "RT @sindresorhus:",
+              body :text :contains "autoprefixer",
+              body :text :contains "postcss",
+              body :text :contains "posthtml"
+             ) {
+      fileinto "INBOX.sieve_trash";
+      stop;
+    }
+
+    fileinto "INBOX.twitter2";
+    stop;
+  }
+
+  if header :contains "Subject" "[twitter]" {
+    fileinto "INBOX.twitter";
+    stop;
+  }
+
+  if header :contains "Subject" "[twitter2]" {
+    fileinto "INBOX.twitter_test";
+    stop;
+  }
 }
