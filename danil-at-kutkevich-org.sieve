@@ -155,7 +155,7 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
 
 # Twitter.
 if address :all :is "from" "noreply@kutkevich.org" {
-  if header :contains "Subject" "[twitter] @andreysitnik") {
+  if header :contains "Subject" "[twitter] @andreysitnik" {
     if anyof (
               body :text :contains "RT @PostCSS:",
               body :text :contains "RT @RussianSpaceWeb:",
