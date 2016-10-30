@@ -175,6 +175,11 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
     stop;
   }
 
+  if header :contains "Subject" [" @emacs ", " @emacs_knight "] {
+    fileinto "INBOX.twitter2";
+    stop;
+  }
+
   if header :contains "Subject" " @rubynoname " {
     fileinto "INBOX.twitter2";
     stop;
