@@ -194,3 +194,8 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
   fileinto "INBOX.twitter_test";
   stop;
 }
+
+if address :all :is "from" "newsletter@bongacams.com" {
+  discard;
+  stop;
+}
