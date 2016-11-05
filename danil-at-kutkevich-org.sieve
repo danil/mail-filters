@@ -7,11 +7,6 @@ if header :contains ["x-resolved-to"] "+personalitysentitem-20160237@" {
   stop;
 }
 
-if address :all :is "from" "NoteBookReview@lists.techtarget.com" {
-  discard;
-  stop;
-}
-
 if not header :contains ["X-Spam-known-sender"] "yes" {
   if allof(header :contains ["X-Backscatter"] "yes",
            not header :matches ["X-LinkName"] "*") {
@@ -156,6 +151,16 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
 # Twitter.
 if allof (address :all :is "from" "noreply@kutkevich.org",
           header :contains "Subject" "[twitter]") {
+  if header :contains "Subject" [
+                                 " @emacs ",
+                                 " @emacs_knight ",
+                                 " @rubynoname ",
+                                 " @somebody32 "
+                                 ] {
+    fileinto "INBOX.twitter2";
+    stop;
+  }
+
   if header :contains "Subject" " @andreysitnik " {
     if anyof (
               body :text :contains "RT @PostCSS:",
@@ -175,16 +180,6 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
     stop;
   }
 
-  if header :contains "Subject" [" @emacs ", " @emacs_knight "] {
-    fileinto "INBOX.twitter2";
-    stop;
-  }
-
-  if header :contains "Subject" " @rubynoname " {
-    fileinto "INBOX.twitter2";
-    stop;
-  }
-
   fileinto "INBOX.twitter";
   stop;
 }
@@ -192,6 +187,11 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
 if allof (address :all :is "from" "noreply@kutkevich.org",
           header :contains "Subject" "[twitter2]") {
   fileinto "INBOX.twitter_test";
+  stop;
+}
+
+if address :all :is "from" "NoteBookReview@lists.techtarget.com" {
+  discard;
   stop;
 }
 
