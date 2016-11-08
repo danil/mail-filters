@@ -161,6 +161,11 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
     stop;
   }
 
+  if header :contains "Subject" " @lostinwiki " {
+    fileinto "INBOX.twitter3";
+    stop;
+  }
+
   if header :contains "Subject" " @andreysitnik " {
     if anyof (
               body :text :contains "RT @PostCSS:",
