@@ -167,16 +167,44 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
   }
 
   if header :contains "Subject" " @andreysitnik " {
-    if anyof (
-              body :text :contains "RT @PostCSS:",
-              body :text :contains "RT @RussianSpaceWeb:",
-              body :text :contains "RT @StationCDRKelly:",
-              body :text :contains "RT @neomechanica:",
-              body :text :contains "RT @sindresorhus:",
-              body :text :contains "autoprefixer",
-              body :text :contains "postcss",
-              body :text :contains "posthtml"
-             ) {
+    if anyof (body :text :contains [
+                                    "RT @AngelaRichter_:",
+                                    "RT @FiraCode:",
+                                    "RT @LPNational:",
+                                    "RT @NASAJuno:",
+                                    "RT @Oniropolis:",
+                                    "RT @PostCSS:",
+                                    "RT @RanaHarbi:",
+                                    "RT @ReBeccaOrg:",
+                                    "RT @RealSexyCyborg:",
+                                    "RT @RussianSpaceWeb:",
+                                    "RT @RussianSpaceWeb:",
+                                    "RT @STILPHASE:",
+                                    "RT @Shtandart:",
+                                    "RT @StationCDRKelly:",
+                                    "RT @archillect:",
+                                    "RT @ben_eb:",
+                                    "RT @danieltrbn:",
+                                    "RT @dynarski:",
+                                    "RT @evlogii:",
+                                    "RT @feltron:",
+                                    "RT @iamvdo:",
+                                    "RT @mattbirchler:",
+                                    "RT @neil_neilzone:",
+                                    "RT @neomechanica:",
+                                    "RT @scienceserious:",
+                                    "RT @simonstalenhag:",
+                                    "RT @sindresorhus:",
+                                    "RT @sindresorhus:",
+                                    "RT @sovietvisuals:",
+                                    "RT @tinydinosaurs:",
+                                    "RT @turbojedi:",
+                                    "RT @xwoody:",
+                                    "RT @ziyatong:",
+                                    "autoprefixer",
+                                    "postcss",
+                                    "posthtml"
+                                    ]) {
       fileinto "INBOX.sieve_trash";
       stop;
     }
