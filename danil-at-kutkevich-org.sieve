@@ -180,43 +180,22 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
 
   if header :contains "Subject" " @andreysitnik " {
     if anyof (body :text :contains [
-                                    "RT @AngelaRichter_:",
-                                    "RT @FiraCode:",
-                                    "RT @LPNational:",
-                                    "RT @NASAJuno:",
-                                    "RT @Oniropolis:",
-                                    "RT @PostCSS:",
-                                    "RT @RanaHarbi:",
-                                    "RT @ReBeccaOrg:",
-                                    "RT @RealSexyCyborg:",
-                                    "RT @RussianSpaceWeb:",
-                                    "RT @RussianSpaceWeb:",
-                                    "RT @STILPHASE:",
-                                    "RT @Shtandart:",
-                                    "RT @StationCDRKelly:",
-                                    "RT @archillect:",
-                                    "RT @ben_eb:",
-                                    "RT @danieltrbn:",
-                                    "RT @dynarski:",
-                                    "RT @evlogii:",
-                                    "RT @feltron:",
-                                    "RT @iamvdo:",
-                                    "RT @mattbirchler:",
-                                    "RT @neil_neilzone:",
-                                    "RT @neomechanica:",
-                                    "RT @scienceserious:",
-                                    "RT @simonstalenhag:",
-                                    "RT @sindresorhus:",
-                                    "RT @sindresorhus:",
-                                    "RT @sovietvisuals:",
-                                    "RT @tinydinosaurs:",
-                                    "RT @turbojedi:",
-                                    "RT @xwoody:",
-                                    "RT @ziyatong:",
                                     "autoprefixer",
                                     "postcss",
                                     "posthtml"
-                                    ]) {
+                                    ],
+              allof (body :text :contains "RT @",
+                     body :text :contains [
+                                           "css",
+                                           "front",
+                                           "javascript",
+                                           "nasa",
+                                           "science",
+                                           "ship",
+                                           "soviet",
+                                           "space",
+                                           "station"
+                                           ])) {
       fileinto "INBOX.sieve_trash";
       stop;
     }
