@@ -154,10 +154,22 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
   if header :contains "Subject" [
                                  " @emacs ",
                                  " @emacs_knight ",
-                                 " @rubynoname ",
-                                 " @somebody32 "
+                                 " @rubynoname "
                                  ] {
     fileinto "INBOX.twitter2";
+    stop;
+  }
+
+  if header :contains "Subject" " @somebody32 " {
+    if anyof (body :text :contains [
+                                    "javascript",
+                                    "react"
+                                    ]) {
+      fileinto "INBOX.sieve_trash";
+      stop;
+    }
+
+    fileinto "INBOX.twitter3";
     stop;
   }
 
