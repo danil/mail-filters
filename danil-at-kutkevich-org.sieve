@@ -179,23 +179,33 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
   }
 
   if header :contains "Subject" " @andreysitnik " {
-    if anyof (body :text :contains [
+    if anyof (body :text :contains "RT @",
+              body :text :contains [
                                     "autoprefixer",
+                                    "baikonur",
+                                    "batman",
+                                    "communist",
+                                    "css",
+                                    "eslint",
+                                    "front",
+                                    "game",
+                                    "javascript",
+                                    "nasa",
+                                    "nkvd",
+                                    "npm",
                                     "postcss",
-                                    "posthtml"
-                                    ],
-              allof (body :text :contains "RT @",
-                     body :text :contains [
-                                           "css",
-                                           "front",
-                                           "javascript",
-                                           "nasa",
-                                           "science",
-                                           "ship",
-                                           "soviet",
-                                           "space",
-                                           "station"
-                                           ])) {
+                                    "posthtml",
+                                    "rule",
+                                    "science",
+                                    "ship",
+                                    "societ",
+                                    "soviet",
+                                    "space",
+                                    "station",
+                                    "style",
+                                    "superman",
+                                    "ussr"
+                                    ]) {
       fileinto "INBOX.sieve_trash";
       stop;
     }
