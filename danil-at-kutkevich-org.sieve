@@ -173,8 +173,9 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
     stop;
   }
 
-  if header :contains "Subject" " @lostinwiki " {
-    fileinto "INBOX.twitter3";
+  if allof (header :contains "Subject" [" @golang ", " @rob_pike "],
+            body :text :contains "RT @") {
+    fileinto "INBOX.sieve_trash";
     stop;
   }
 
@@ -210,6 +211,11 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
       stop;
     }
 
+    fileinto "INBOX.twitter3";
+    stop;
+  }
+
+  if header :contains "Subject" " @lostinwiki " {
     fileinto "INBOX.twitter3";
     stop;
   }
