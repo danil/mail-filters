@@ -156,6 +156,11 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
                                  " @emacs_knight ",
                                  " @rubynoname "
                                  ] {
+    if anyof (body :text :contains ["emacs news"]) {
+      fileinto "INBOX.sieve_trash";
+      stop;
+    }
+
     fileinto "INBOX.twitter2";
     stop;
   }
