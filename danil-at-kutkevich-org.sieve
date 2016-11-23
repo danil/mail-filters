@@ -149,6 +149,11 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
 }
 
 if address :all :is "to" ["armor5games@gmail.com", "admin@armor5games.com"] {
+  if address :all :is "from" ["marina@sutki-dom.ru"] {
+    fileinto "INBOX.sieve_trash";
+    stop;
+  }
+
   fileinto "INBOX.armor5games";
   stop;
 }
