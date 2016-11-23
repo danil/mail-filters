@@ -167,7 +167,7 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
                                  " @emacs_knight ",
                                  " @rubynoname "
                                  ] {
-    if anyof (body :text :contains ["emacs news"]) {
+    if body :text :contains ["emacs news"] {
       fileinto "INBOX.sieve_trash";
       stop;
     }
@@ -177,10 +177,10 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
   }
 
   if header :contains "Subject" " @somebody32 " {
-    if anyof (body :text :contains [
-                                    "javascript",
-                                    "react"
-                                    ]) {
+    if body :text :contains [
+                             "javascript",
+                             "react"
+                             ] {
       fileinto "INBOX.sieve_trash";
       stop;
     }
