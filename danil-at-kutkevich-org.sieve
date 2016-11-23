@@ -148,6 +148,11 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   removeflag "\\Seen";
 }
 
+if address :all :is "to" ["armor5games@gmail.com", "admin@armor5games.com"] {
+  fileinto "INBOX.armor5games";
+  stop;
+}
+
 # Twitter.
 if allof (address :all :is "from" "noreply@kutkevich.org",
           header :contains "Subject" "[twitter]") {
