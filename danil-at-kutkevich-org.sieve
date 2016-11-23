@@ -149,7 +149,8 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
 }
 
 if address :all :is "to" ["armor5games@gmail.com", "admin@armor5games.com"] {
-  if address :all :is "from" ["marina@sutki-dom.ru"] {
+  if anyof (address :all :is "from" ["marina@sutki-dom.ru"],
+            body :text :contains ["forum.armor5games.com/index.php?/notifications/options/&amp;type=unapproved_content"]) {
     fileinto "INBOX.sieve_trash";
     stop;
   }
