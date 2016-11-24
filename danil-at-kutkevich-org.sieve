@@ -153,9 +153,17 @@ if address :all :is "to" ["armor5games@gmail.com", "admin@armor5games.com"] {
                                      "advertmobile.net",
                                      "marina@sutki-dom.ru"
                                      ],
+            header :contains [
+                              "распродажа",
+                              "скидкa",
+                              "скидки"
+                              ],
             body :text :contains [
                                   "forum.armor5games.com/index.php?/notifications/options/&amp;type=unapproved_content",
-                                  "валерия"
+                                  "валерия",
+                                  "распродажа",
+                                  "скидкa",
+                                  "скидки"
                                   ]) {
     fileinto "INBOX.sieve_trash";
     stop;
