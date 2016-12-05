@@ -162,12 +162,18 @@ if address :all :is "to" ["armor5games@gmail.com", "admin@armor5games.com"] {
 # Twitter.
 if allof (address :all :is "from" "noreply@kutkevich.org",
           header :contains "Subject" "[twitter]") {
-  if header :contains "Subject" [
-                                 " @emacs ",
-                                 " @emacs_knight ",
-                                 " @rubynoname "
-                                 ] {
-    if body :text :contains ["emacs news"] {
+  if header :contains "Subject" " @rubynoname " {
+    fileinto "INBOX.twitter2";
+    stop;
+  }
+
+  if header :contains "Subject" [" @emacs ", " @emacs_knight "] {
+    if body :text :contains [
+                             "cider",
+                             "clojure",
+                             "company",
+                             "emacs news"
+                             ] {
       fileinto "INBOX.sieve_trash";
       stop;
     }
