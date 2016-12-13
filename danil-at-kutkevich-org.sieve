@@ -149,8 +149,14 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
 }
 
 if address :all :is ["to", "cc", "bcc"] ["armor5games@gmail.com", "admin@armor5games.com"] {
-  if anyof (header :regex "Subject" ["[а-яА-Я]"],
-            body :text :regex "[а-яА-Я]") {
+  if allof(anyof (header :regex "Subject" ["[а-яА-Я]"],
+                  body :text :regex "[а-яА-Я]"),
+           not header :contains "Subject" "IPS Community Suite") {
+      fileinto "INBOX.sieve_trash";
+    stop;
+  }
+
+  if address :all :is "from" "unity3d.com" {
     fileinto "INBOX.sieve_trash";
     stop;
   }
@@ -218,6 +224,7 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
                                     "npm",
                                     "postcss",
                                     "posthtml",
+                                    "redux",
                                     "rule",
                                     "science",
                                     "ship",
