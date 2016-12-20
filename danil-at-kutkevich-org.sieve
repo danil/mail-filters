@@ -156,7 +156,7 @@ if address :all :is ["to", "cc", "bcc"] ["armor5games@gmail.com", "admin@armor5g
     stop;
   }
 
-  if address :all :is "from" "unity3d.com" {
+  if address :is :domain "from" "unity3d.com" {
     fileinto "INBOX.sieve_trash";
     stop;
   }
