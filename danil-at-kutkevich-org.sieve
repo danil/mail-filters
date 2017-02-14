@@ -197,7 +197,7 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
       stop;
     }
 
-    fileinto "INBOX.twitter3";
+    fileinto "INBOX.twitter2";
     stop;
   }
 
@@ -215,11 +215,14 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
                                     "batman",
                                     "communist",
                                     "css",
+                                    "cyberpunk",
                                     "eslint",
                                     "food",
                                     "front",
                                     "game",
+                                    "iran",
                                     "javascript",
+                                    "js",
                                     "nasa",
                                     "nkvd",
                                     "npm",
@@ -236,18 +239,20 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
                                     "station",
                                     "style",
                                     "superman",
-                                    "ussr"
+                                    "ussr",
+                                    "vladisvostok",
+                                    "webpack"
                                     ]) {
       fileinto "INBOX.sieve_trash";
       stop;
     }
 
-    fileinto "INBOX.twitter3";
+    fileinto "INBOX.twitter2";
     stop;
   }
 
   if header :contains "Subject" " @lostinwiki " {
-    fileinto "INBOX.twitter3";
+    fileinto "INBOX.twitter2";
     stop;
   }
 
