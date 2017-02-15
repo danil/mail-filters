@@ -148,23 +148,6 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   removeflag "\\Seen";
 }
 
-if address :all :is ["to", "cc", "bcc"] ["armor5games@gmail.com", "admin@armor5games.com"] {
-  if allof(anyof (header :regex "Subject" ["[а-яА-Я]"],
-                  body :text :regex "[а-яА-Я]"),
-           not header :contains "Subject" "IPS Community Suite") {
-      fileinto "INBOX.sieve_trash";
-    stop;
-  }
-
-  if address :is :domain "from" "unity3d.com" {
-    fileinto "INBOX.sieve_trash";
-    stop;
-  }
-
-  fileinto "INBOX.armor5games";
-  stop;
-}
-
 # Twitter.
 if allof (address :all :is "from" "noreply@kutkevich.org",
           header :contains "Subject" "[twitter]") {
@@ -264,6 +247,31 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
           header :contains "Subject" "[twitter2]") {
   fileinto "INBOX.twitter_test";
   stop;
+}
+
+
+if address :all :is ["to", "cc", "bcc"] ["armor5games@gmail.com", "admin@armor5games.com"] {
+  if allof(anyof (header :regex "Subject" ["[а-яА-Я]"],
+                  body :text :regex "[а-яА-Я]"),
+           not header :contains "Subject" "IPS Community Suite") {
+      fileinto "INBOX.sieve_trash";
+    stop;
+  }
+
+  if address :is :domain "from" "unity3d.com" {
+    fileinto "INBOX.sieve_trash";
+    stop;
+  }
+
+  fileinto "INBOX.armor5games";
+  stop;
+}
+
+if address :all :is "from" "do-not-reply@trello.com" {
+  if header :contains "Subject" "on Rise of Pirates" {
+    fileinto "INBOX.armor5games";
+    stop;
+  }
 }
 
 if address :all :is "from" "NoteBookReview@lists.techtarget.com" {
