@@ -274,6 +274,15 @@ if address :all :is "from" "do-not-reply@trello.com" {
   }
 }
 
+if allof(address :all :is "from" [
+                                  "root@armor5games.com",
+                                  "danil@armor5games.com"
+                                  ],
+         header :contains "Subject" "armor5testserver") {
+  fileinto "INBOX.foobar";
+  stop;
+}
+
 if address :all :is "from" "NoteBookReview@lists.techtarget.com" {
   discard;
   stop;
