@@ -263,6 +263,11 @@ if address :all :is ["to", "cc", "bcc"] ["armor5games@gmail.com", "admin@armor5g
     stop;
   }
 
+  if address :all :is "from" "noreply@gameanalytics.com" {
+    fileinto "INBOX.sieve_trash";
+    stop;
+  }
+
   fileinto "INBOX.armor5games";
   stop;
 }
