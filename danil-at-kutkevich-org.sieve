@@ -19,6 +19,12 @@ if not header :contains ["X-Spam-known-sender"] "yes" {
   }
 }
 
+if allof(address :all :is "from" "netdata@h2.kutkevich.org",
+         header :contains "Subject" "h2 recovered") {
+  fileinto "INBOX.sieve_trash";
+  stop;
+}
+
 if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.googlegroups.com>"] {
   fileinto "INBOX.ror2ru_list";
 } elsif address :all :is "from" "noreply@youtube.com" {
