@@ -261,6 +261,11 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
 
 
 if address :all :is ["to", "cc", "bcc"] ["armor5games@gmail.com", "admin@armor5games.com"] {
+  if address :is :domain "from" "bugsnag.com" {
+    keep;
+    stop;
+  }
+
   if allof(anyof (header :regex "Subject" ["[а-яА-Я]"],
                   body :text :regex "[а-яА-Я]"),
            not header :contains "Subject" "IPS Community Suite") {
