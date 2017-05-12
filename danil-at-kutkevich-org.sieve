@@ -261,7 +261,7 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
 
 
 if address :all :is ["to", "cc", "bcc"] ["armor5games@gmail.com", "admin@armor5games.com"] {
-  if address :is :domain "from" "bugsnag.com" {
+  if address :all :is "from" "notifications@bugsnag.com" {
     keep;
     stop;
   }
