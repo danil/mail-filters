@@ -159,8 +159,8 @@ if address :domain :is "from" "h2.kutkevich.org" {
   # cron.
   if allof (header :contains "Subject" "Cron",
             body :text :contains [
-                                  "remote: To create a merge request for",
                                   "remote: Create pull request for",
+                                  "remote: To create a merge request for"
                                   ]) {
     fileinto "INBOX.sieve_trash";
     stop;
