@@ -272,6 +272,12 @@ if allof (address :all :is "from" "noreply@kutkevich.org",
   stop;
 }
 
+if address :domain :is "from" ["ah9.armor5games.com", "bh1.armor5games.com"] {
+  if header :contains "Subject" "recovered" {
+    fileinto "INBOX.sieve_trash";
+    stop;
+  }
+}
 
 if address :all :is ["to", "cc", "bcc"] ["armor5games@gmail.com", "admin@armor5games.com"] {
   if address :all :is "from" "notifications@bugsnag.com" {
