@@ -1,5 +1,5 @@
-# You were using Advanced Rules (custom sieve script). We disabled all
-# the converted rules and appended your existing script below
+# Danil <danil@kutkevich.org>.
+# <https://www.fastmail.com/help/technical/sieve-examples.html>.
 
 if header :contains ["x-resolved-to"] "+personalitysentitem-20160237@" {
   setflag "\\Seen";
@@ -17,12 +17,6 @@ if not header :contains ["X-Spam-known-sender"] "yes" {
       fileinto "INBOX.Junk Mail";
       stop;
   }
-}
-
-if allof(address :all :is "from" "netdata@h2.kutkevich.org",
-         header :contains "Subject" "h2 recovered") {
-  fileinto "INBOX.sieve_trash";
-  stop;
 }
 
 if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.googlegroups.com>"] {
@@ -152,6 +146,25 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.Chats";
   removeflag "$ChatLog";
   removeflag "\\Seen";
+}
+
+# h2.kutkevich.org.
+if address :domain :is "from" "h2.kutkevich.org" {
+  # netdata.
+  if header :contains "Subject" "h2 recovered" {
+    fileinto "INBOX.sieve_trash";
+    stop;
+  }
+
+  # cron.
+  if allof (header :contains "Subject" "Cron",
+            body :text :contains [
+                                  "remote: To create a merge request for",
+                                  "remote: Create pull request for",
+                                  ]) {
+    fileinto "INBOX.sieve_trash";
+    stop;
+  }
 }
 
 # Twitter.
