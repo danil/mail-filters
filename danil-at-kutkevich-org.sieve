@@ -290,6 +290,18 @@ if address :all :is ["to", "cc", "bcc"] ["armor5games@gmail.com", "admin@armor5g
     stop;
   }
 
+  if address :domain :is "from" [
+                                 "ah3.armor5games.com",
+                                 "ah5.armor5games.com",
+                                 "ah7.armor5games.com",
+                                 "ah9.armor5games.com",
+                                 "ah10.armor5games.com",
+                                 "bh1.armor5games.com"
+                                 ] {
+    keep;
+    stop;
+  }
+
   if allof(anyof (header :regex "Subject" ["[а-яА-Я]"],
                   body :text :regex "[а-яА-Я]"),
            not header :contains "Subject" "IPS Community Suite") {
