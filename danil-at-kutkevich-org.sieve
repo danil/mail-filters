@@ -277,6 +277,11 @@ if address :domain :is "from" ["ah9.armor5games.com", "bh1.armor5games.com"] {
     fileinto "INBOX.sieve_trash";
     stop;
   }
+
+  # if header :contains "X-Forwarded-For" "armor5games@gmail.com" {
+  #   fileinto "INBOX.sieve_trash";
+  #   stop;
+  # }
 }
 
 if address :all :is ["to", "cc", "bcc"] ["armor5games@gmail.com", "admin@armor5games.com"] {
