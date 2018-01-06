@@ -63,8 +63,6 @@ if header :is ["list-id", "list-post"] ["ror2ru.googlegroups.com", "<ror2ru.goog
   fileinto "INBOX.lists";
 } elsif address :all :is ["to", "cc", "resent-to", "x-delivered-to"] "news@lists.molinos.ru" {
   fileinto "INBOX.molinos";
-} elsif header :is "list-id" "gentoo-user-ru.gentoo.org" {
-  fileinto "INBOX.gentoo_community";
 } elsif address :all :is "from" "contact@humblebundle.com" {
   fileinto "INBOX.humblebundle_list";
 } elsif allof (header :is ["list-id", "list-post"] ["medappsupport.hospital-systems.com", "<medappsupport.hospital-systems.com>"],
@@ -282,6 +280,16 @@ if address :domain :is "from" ["ah9.armor5games.com", "bh1.armor5games.com"] {
   #   fileinto "INBOX.sieve_trash";
   #   stop;
   # }
+}
+
+if header :contains "list-id" "gentoo-user.gentoo.org" {
+  fileinto "INBOX.gentoo_users";
+  stop;
+}
+
+if  header :is "list-id" "gentoo-user-ru.gentoo.org" {
+  fileinto "INBOX.gentoo_community";
+  stop;
 }
 
 if address :all :is ["to", "cc", "bcc"] ["armor5games@gmail.com", "admin@armor5games.com"] {
