@@ -282,11 +282,11 @@ if address :domain :is "from" ["ah9.armor5games.com", "bh1.armor5games.com"] {
   # }
 }
 
+# Gentoo.
 if header :contains "list-id" "gentoo-user.gentoo.org" {
   fileinto "INBOX.gentoo_users";
   stop;
 }
-
 if  header :is "list-id" "gentoo-user-ru.gentoo.org" {
   fileinto "INBOX.gentoo_community";
   stop;
